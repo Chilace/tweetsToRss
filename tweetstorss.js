@@ -375,7 +375,7 @@ function getFeed (username, fname, callback) {
 							}
 						else {
 							if (item.idTweet != undefined) {
-								add ("<source:outline text=\"" + itemtext + "\" created=\"" + itemcreated + "\" type=\"tweet\" tweetId=\"" + item.idTweet + "\" tweetUserName=\"" + encode (item.twitterScreenName) + "\"/>");
+								add ("<source:outline text=\"" + itemtext + "\" created=\"" + itemcreated + "\" type=\"tweet\" tweetId=\"" + item.idTweet + "\" tweetUserName=\"" + encode (username) + "\"/>");
 								}
 							if (item.enclosure != undefined) { //9/23/14 by DW
 								var enc = item.enclosure;
