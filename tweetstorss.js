@@ -307,7 +307,7 @@ function getFeed (username, fname, callback) {
 				addOutline (theOutline);
 				return (xmltext);
 				}
-			var xmltext = "", indentlevel = 0, starttime = new Date (); nowstring = starttime.toGMTString ();
+			var xmltext = "", indentlevel = 0, starttime = new Date (), nowstring = starttime.toGMTString ();
 			var username = headElements.twitterScreenName, maxitems = headElements.maxFeedItems;
 			function add (s) {
 				xmltext += filledString ("\t", indentlevel) + s + "\n";
@@ -327,7 +327,6 @@ function getFeed (username, fname, callback) {
 				add ("<description>" + encode (headElements.description) + "</description>");
 				add ("<pubDate>" + whenMostRecentTweet ().toUTCString () + "</pubDate>"); 
 				add ("<lastBuildDate>" + nowstring + "</lastBuildDate>");
-				add ("<language>" + encode (headElements.language) + "</language>");
 				add ("<generator>" + headElements.generator + "</generator>");
 				add ("<docs>" + headElements.docs + "</docs>");
 				addAccount ("twitter", username); 
@@ -400,7 +399,6 @@ function getFeed (username, fname, callback) {
 				title: username + "'s RSS Feed",
 				link: userbaseurl,
 				description: "A feed generated from " + username + "'s tweets by " + myProductUrl,
-				language: "en-us",
 				generator: myProductName,
 				docs: "http://cyber.law.harvard.edu/rss/rss.html",
 				twitterScreenName: username,
@@ -504,4 +502,3 @@ function startup () {
 	setInterval (everyMinute, 60000); 
 	}
 startup ();
-
