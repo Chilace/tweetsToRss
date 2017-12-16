@@ -333,9 +333,10 @@ function getFeed (username, fname, callback) {
 			//add items
 				var ctitems = 0;
 				for (var i = 0; (i < historyArray.length) && (ctitems < maxitems); i++) {
-					var item = historyArray [i], itemcreated = twTwitterDateToGMT (item.when), itemtext = encode (item.text);
+					var item = historyArray [i], itemcreated = twTwitterDateToGMT (item.when), itemtext = encode (item.text), itemtitle = encode (item.title);
 					var linktotweet = encode ("https://twitter.com/" + username + "/status/" + item.idTweet);
 					add ("<item>"); indentlevel++;
+					add ("<title>" + itemtitle + "</title>"); 
 					add ("<description>" + itemtext + "</description>"); 
 					add ("<pubDate>" + itemcreated + "</pubDate>"); 
 					//link -- 8/12/14 by DW
@@ -393,6 +394,7 @@ function getFeed (username, fname, callback) {
 			return (xmltext);
 			}
 		function addFeedItem (t) {
+			var name = t.user.name;
 			var username = t.user.screen_name;
 			var userbaseurl = "http://twitter.com/" + username + "/";
 			rssHeadElements = {
@@ -405,6 +407,7 @@ function getFeed (username, fname, callback) {
 				maxFeedItems: 25
 				};
 			var historyItem = {
+				title: name + " @" + username,
 				when: new Date (t.created_at),
 				idTweet: t.id_str,
 				guid: {
