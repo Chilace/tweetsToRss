@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:feed', function (req, res) {
-  res.sendFile(__dirname + '/.data/feeds/' + req.params.feed);
+  res.sendFile(__dirname + '/feeds/' + req.params.feed);
 });
 
 var listener = app.listen(process.env.PORT, function () {
