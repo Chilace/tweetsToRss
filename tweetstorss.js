@@ -407,7 +407,7 @@ function getFeed (username, fname, callback) {
 				maxFeedItems: 25
 				};
 			var historyItem = {
-				title: name + " @" + username,
+				title: name + " (@" + username + ")",
 				when: new Date (t.created_at),
 				idTweet: t.id_str,
 				guid: {
