@@ -397,15 +397,6 @@ function getFeed (username, fname, callback) {
 			var name = t.user.name;
 			var username = t.user.screen_name;
 			var userbaseurl = "http://twitter.com/" + username + "/";
-			rssHeadElements = {
-				title: username + "'s RSS Feed",
-				link: userbaseurl,
-				description: "A feed generated from " + username + "'s tweets by " + myProductUrl,
-				generator: myProductName,
-				docs: "http://cyber.law.harvard.edu/rss/rss.html",
-				twitterScreenName: username,
-				maxFeedItems: 25
-				};
 			var historyItem = {
 				title: name + " (@" + username + ")",
 				when: new Date (t.created_at),
@@ -433,6 +424,17 @@ function getFeed (username, fname, callback) {
 			rssHistory [rssHistory.length] = historyItem;
 			}
 		getTwitterTimeline (username, function (theTweets) { 
+			var username = theTweets [0].user.screen_name;
+			var userbaseurl = "http://twitter.com/" + username;
+			rssHeadElements = {
+				title: username + "'s RSS Feed",
+				link: userbaseurl,
+				description: "A feed generated from " + username + "'s tweets by " + myProductUrl,
+				generator: myProductName,
+				docs: "http://cyber.law.harvard.edu/rss/rss.html",
+				twitterScreenName: username,
+				maxFeedItems: 25
+			};
 			for (var i = 0; i < theTweets.length; i++) {
 				var thisTweet = theTweets [i], s = thisTweet.text, flInclude = true;
 				if (flSkipReplies) {
