@@ -386,11 +386,11 @@ function getFeed (username, fname, callback) {
 									}
 								}
 							}
-					add ("</item>"); indentlevel--;
+					indentlevel--; add ("</item>");
 					ctitems++;
 					}
-			add ("</channel>"); indentlevel--;
-			add ("</rss>"); indentlevel--;
+			indentlevel--; add ("</channel>");
+			indentlevel--; add ("</rss>");
 			return (xmltext);
 			}
 		function addFeedItem (t) {
